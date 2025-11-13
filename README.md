@@ -100,4 +100,3 @@ All non-Python assets from the original project have been removed so this reposi
 - Use `--amount` to sweep order sizes without editing instances.
 - Run `evaluate_engines.py` before plotting to refresh the summary JSON.
 
-License: MIT
