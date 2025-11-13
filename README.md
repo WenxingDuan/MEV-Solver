@@ -1,104 +1,103 @@
-# MEV Solver
+# MEV solver
 
-This trimmed repo keeps the Python reference implementations needed to experiment with the hybrid routing concepts from *Hybrid Genetic Algorithm for Optimal User Order Routing in CoW Protocol*. Only four capabilities remain:
+This repository provides a Python research-focused implementation of two routing engines for DEX-like markets and a small benchmarking/plotting toolchain. It is designed to be simple to run end-to-end: load benchmark instances, execute both solvers, write JSON summaries, and generate comparison figures (PNG).
 
-1. **GeneticRouterEngine** – the NSGA-II multi-objective solver (`python/genetic_router_engine.py`).
-2. **DualDecompositionOptimizer** – the deterministic Bellman–Ford baseline (`python/dual_decomposition_optimizer.py`).
-3. **Test/data generation** – benchmark instances under `benchmarks/instances/` plus the runners in `python/run_ga.py`, `python/run_dual.py`, `python/evaluate_engines.py`, and `python/compare_runs.py`.
-4. **Visualization** – GA vs. Dual trade-off plotter (`python/plot_ga_vs_dual.py`) that produces `figures/ga_vs_dual.png`.
+All non-Python assets from the original project have been removed so this repository focuses on the core algorithms and scripts.
 
-All legacy non-Python components have been removed so the repository focuses purely on the Python tooling.
+**Key Capabilities**
+- GeneticRouterEngine (NSGA-II) for multi-objective routing
+- DualDecompositionOptimizer (Bellman–Ford baseline) for deterministic routing
+- Batch evaluation across instances and rich metrics JSON
+- 2×2 comparison figure showing effectiveness, robustness, and cost
 
-## Requirements
-
+**Requirements**
 - Python ≥ 3.9
 - Optional plotting: `python3 -m pip install matplotlib`
 
-## Deterministic Seeding
+**Dataset**
+- Benchmarks live under `benchmarks/instances/` and are local snapshots adapted from the public Alpha‑Router project.
 
-All Python solvers share the same xorshift32 RNG (`python/seeded_random.py`). Supplying identical `--seed` values guarantees that path generation, crossover, and mutation choices stay deterministic across runs, making experiments reproducible.
+**Deterministic Seeding**
+- All tools share a xorshift32 RNG (`python/seeded_random.py`); repeated runs with the same `--seed` reproduce identical evolutionary trajectories.
 
-## Running the Genetic Router (GA)
+**How To Run (Quick Start)**
+- GA solver → prints a single‑instance JSON to stdout
+  - `python3 python/run_ga.py --instance benchmarks/instances/sample_instance.json --seed 1337`
+- Deterministic baseline → prints a single‑instance JSON to stdout
+  - `python3 python/run_dual.py --instance benchmarks/instances/sample_instance.json`
+- Batch evaluate both solvers on all instances → writes a summary JSON
+  - `python3 python/evaluate_engines.py --instances-dir benchmarks/instances --output benchmarks/results/ga_vs_dual_summary.json`
+- Plot a 2×2 comparison figure → writes PNG
+  - `python3 python/plot_ga_vs_dual.py --summary benchmarks/results/ga_vs_dual_summary.json --output figures/ga_vs_dual.png`
 
-```bash
-python3 python/run_ga.py \
-  --instance benchmarks/instances/sample_instance.json \
-  --seed 1337 \
-  --population 64 \
-  --generations 100
-```
+**Output Files**
+- Single GA run (stdout): best chromosome + Pareto front JSON (see “GA JSON Schema”)
+- Single deterministic run (stdout): best path JSON (see “Deterministic JSON Schema”)
+- Batch summary: `benchmarks/results/ga_vs_dual_summary.json`
+- Figure: `figures/ga_vs_dual.png`
 
-- Flags mirror the `GAConfig` fields.
-- The CLI injects the deterministic RNG and prints a JSON payload containing the best chromosome and the full Pareto front.
-- `fitness.surplus` is the simulated quote-token output (after fees and slippage) summed across all active paths; `gasUnits` and `slippage` capture the corresponding objectives.
+**CLI Options (Common)**
+- `--instance`: path to a single benchmark JSON (for single‑run tools)
+- `--instances-dir`: directory with multiple benchmarks (for batch)
+- `--seed`: deterministic RNG seed (GA and batch)
+- `--amount`: override order size in token units (otherwise read from instance metadata)
 
-## Running the Deterministic Baseline
+**GA JSON Schema (Single Run)**
+- Top‑level
+  - `seed`: RNG seed used
+  - `config`: GA parameters (population, generations, mutation/crossover, limits)
+  - `amount`: order size consumed by the simulator
+  - `generations`: completed NSGA‑II generations
+  - `best`: the selected chromosome from Pareto rank 1
+  - `paretoFront`: all rank‑1 chromosomes
+- Chromosome fields
+  - `paths`: list of token hops; each hop has `fromToken`, `toToken`, `poolAddress`, `protocol`
+  - `splitRatios`: normalized path allocations (sum to 1)
+  - `fitness`: `surplus` (quote‑token output), `gasUnits` (base + per‑hop gas), `slippage` (mid‑price gap)
+  - `rank`, `crowdingDistance`: NSGA‑II rank and diversity (boundary points may show `null` crowding)
 
-```bash
-python3 python/run_dual.py \
-  --instance benchmarks/instances/sample_instance.json \
-  --max-path-length 4
-```
+**Deterministic JSON Schema (Single Run)**
+- Top‑level
+  - `method`: `DETERMINISTIC`
+  - `expectedSurplus`: output from replaying the extracted path in the simulator
+  - `gasUnits`: base + per‑hop gas estimate
+  - `paths`: a single best path in the same hop format as GA
+  - `splitRatios`: `[1.0]` for a single‑path allocation
+  - `pathLength`: number of hops in the route
+  - `slippage`: cumulative mid‑price gap along the route
 
-The script ports `DualDecompositionOptimizer`, replays the best arbitrage-style path through the same AMM simulator used by the GA, and reports the resulting quote-token output (`expectedSurplus`), gas estimate, and slippage. When no profitable path exists, it falls back to an empty solution with only the base transaction cost.
+**Batch Summary JSON Schema** (`benchmarks/results/ga_vs_dual_summary.json`)
+- Per‑instance fields
+  - `instance`, `orderSize`, `orderSizeClass`, `fragmentationLabel`, `ammDiversity`, `gasRegime`
+  - `marketCount`, `tokenCount`, `fragmentationScore` (complexity proxies)
+  - `ga`: `{surplus, gasUnits, slippage, netSurplus, runtimeMs, pathCount, avgHopCount, outputPerGas, splitRatios, rank, generations}`
+  - `deterministic`: `{surplus, gasUnits, runtimeMs, pathLength, paths, slippage, outputPerGas}`
+  - `surplusDelta`, `slippageDelta`, `outputPerGasDelta`, `runtimeRatio`
 
-## Comparing Two JSON Outputs
+**Figure (2×2 Dashboard)**
+- Top‑left: surplus (quote‑token output) vs. fragmentation (effectiveness)
+- Top‑right: slippage vs. fragmentation (robustness to price impact)
+- Bottom‑left: runtime vs. market count (computational cost)
+- Bottom‑right: output‑per‑gas vs. market count (capital efficiency); GA marker size encodes path count
 
-Use the comparison helper to ensure two solver runs (e.g., different seeds or configs) produce identical Pareto fronts:
+**Project Layout**
+- `python/genetic_router_engine.py` — NSGA‑II solver (path‑set chromosome + split ratios; AMM replay fitness)
+- `python/dual_decomposition_optimizer.py` — deterministic Bellman–Ford baseline (negative‑cycle detection)
+- `python/path_simulator.py` — common AMM simulator and market map helpers
+- `python/token_utils.py` — token decimals and normalization utilities
+- `python/seeded_random.py` — xorshift32 RNG used across tools
+- `python/run_ga.py` — CLI for a single GA run (prints JSON)
+- `python/run_dual.py` — CLI for a single deterministic run (prints JSON)
+- `python/evaluate_engines.py` — batch evaluator; writes `benchmarks/results/ga_vs_dual_summary.json`
+- `python/plot_ga_vs_dual.py` — plotter; writes `figures/ga_vs_dual.png`
+- `python/compare_runs.py` — compare two GA JSON outputs (`--lhs`, `--rhs`) for exact parity
+- `benchmarks/instances/` — input datasets (JSON snapshots)
+- `benchmarks/results/` — generated summaries
+- `figures/` — generated figures
 
-```bash
-python3 python/compare_runs.py --lhs run_a.json --rhs run_b.json
-```
-
-The script validates every field of the selected best chromosome and each Pareto-front member with a tight floating-point tolerance.
-
-## Benchmarking GA vs. Dual Decomposition
-
-1. Generate a summary across all benchmark instances:
-
-   ```bash
-   python3 python/evaluate_engines.py \
-     --instances-dir benchmarks/instances \
-     --output benchmarks/results/ga_vs_dual_summary.json
-   ```
-
-   The script profiles each instance (fragmentation, market count), runs both solvers, records runtime/objective metrics, and writes per-instance comparisons.
-
-2. Plot optimization effectiveness and computational cost:
-
-   ```bash
-   python3 python/plot_ga_vs_dual.py \
-     --summary benchmarks/results/ga_vs_dual_summary.json \
-     --output figures/ga_vs_dual.png
-   ```
-
-   The resulting 2×2 figure contrasts: (i) surplus vs. fragmentation, (ii) slippage vs. fragmentation, (iii) runtime vs. market-count complexity, and (iv) capital efficiency (output per gas) vs. market-count, with marker sizes encoding GA path-count diversity. Each vertical segment connects the deterministic baseline to the GA result for a single instance, highlighting how gains/costs evolve with complexity.
-
-## Understanding the Result Fields
-
-Each GA JSON payload contains:
-
-- `seed`: RNG seed that reproduces the run.
-- `config`: The `GAConfig` used by the solver.
-- `amount`: Order size (in base-token units) fed into the fitness calculation.
-- `generations`: Number of completed NSGA-II generations before hitting limits.
-- `best`: The chromosome selected from the rank-1 Pareto front.
-- `paretoFront`: Every chromosome with `rank === 1`.
-
-Chromosomes include:
-
-- `paths`: Ordered hops, each with `{fromToken, toToken, poolAddress, protocol}`.
-- `splitRatios`: Normalised allocation for each path (sums to 1 when paths exist).
-- `fitness`: `{surplus, gasUnits, slippage}` where `surplus` is the simulated quote-token output, `gasUnits` is cumulative gas, and `slippage` aggregates price degradation relative to the local mid-price.
-- `rank`: Pareto rank (1 is non-dominated).
-- `crowdingDistance`: NSGA-II diversity score within the same rank (boundary individuals show `null` because infinite crowding distance serialises to `null`).
-
-When a chromosome cannot discover a valid path between the base and quote token within the maximum path length, it keeps `paths: []` and yields zero surplus. The deterministic baseline likewise returns a zero-surplus solution when no profitable path exists, ensuring a consistent fallback.
-
-## Repository Layout
-
-- `python/` – GA engine, dual baseline, CLI runners, evaluators, plotting code.
-- `benchmarks/` – fixed benchmark instances and result placeholders.
-- `figures/` – generated figures such as `ga_vs_dual.png`.
+**Reproducibility Tips**
+- Pin the seed (`--seed`) and GA hyperparameters when comparing runs.
+- Use `--amount` to sweep order sizes without editing instances.
+- Run `evaluate_engines.py` before plotting to refresh the summary JSON.
 
 License: MIT
