@@ -1,4 +1,4 @@
-# Alpha-Router (Python Only)
+# MEV Solver
 
 This trimmed repo keeps the Python reference implementations needed to experiment with the hybrid routing concepts from *Hybrid Genetic Algorithm for Optimal User Order Routing in CoW Protocol*. Only four capabilities remain:
 
