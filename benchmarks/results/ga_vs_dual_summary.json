@@ -1,0 +1,629 @@
+[
+  {
+    "instance": "ex-high-0001",
+    "orderSize": 200.0,
+    "orderSizeClass": "large",
+    "fragmentationLabel": "high",
+    "ammDiversity": "homogeneous_v2",
+    "gasRegime": "high",
+    "marketCount": 4,
+    "tokenCount": 4,
+    "fragmentationScore": 0.2222222222222222,
+    "ga": {
+      "surplus": 7880185.361217827,
+      "gasUnits": 921000.0,
+      "slippage": 1438347.9737606295,
+      "netSurplus": 7880185.333587826,
+      "runtimeMs": 134.61124999999998,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 8.556118741821745,
+      "splitRatios": [
+        0.4046314133968547,
+        0.30553773156873726,
+        0.28983085503440803
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 5056547.698693132,
+      "gasUnits": 321000,
+      "runtimeMs": 0.06041699999997929,
+      "pathLength": 2,
+      "paths": [
+        [
+          {
+            "fromToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "toToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "poolAddress": "0x2222",
+            "protocol": "UniswapV2"
+          },
+          {
+            "fromToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "toToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "poolAddress": "0x3333",
+            "protocol": "UniswapV2"
+          }
+        ]
+      ],
+      "slippage": 2124872.59197361,
+      "outputPerGas": 15.752485042657732
+    },
+    "surplusDelta": 2823637.6625246946,
+    "slippageDelta": -686524.6182129807,
+    "outputPerGasDelta": -7.196366300835987,
+    "runtimeRatio": 2228.035983250511
+  },
+  {
+    "instance": "ex-homo-med-med-ghigh",
+    "orderSize": 10.0,
+    "orderSizeClass": "medium",
+    "fragmentationLabel": "medium",
+    "ammDiversity": "homogeneous_v2",
+    "gasRegime": "high",
+    "marketCount": 3,
+    "tokenCount": 3,
+    "fragmentationScore": 0.3333333333333333,
+    "ga": {
+      "surplus": 504920.1556978365,
+      "gasUnits": 921000.0,
+      "slippage": 10576.916232983016,
+      "netSurplus": 504920.12806783646,
+      "runtimeMs": 145.20741700000002,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.5482303536350016,
+      "splitRatios": [
+        0.3400043786601256,
+        0.33410229020139287,
+        0.3258933311384815
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 468679.44700244296,
+      "gasUnits": 321000,
+      "runtimeMs": 0.037708000000025166,
+      "pathLength": 2,
+      "paths": [
+        [
+          {
+            "fromToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "toToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "poolAddress": "0xa191",
+            "protocol": "UniswapV2"
+          },
+          {
+            "fromToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "toToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "poolAddress": "0xa192",
+            "protocol": "UniswapV2"
+          }
+        ]
+      ],
+      "slippage": 27395.227940193974,
+      "outputPerGas": 1.4600605825621276
+    },
+    "surplusDelta": 36240.70869539352,
+    "slippageDelta": -16818.31170721096,
+    "outputPerGasDelta": -0.911830228927126,
+    "runtimeRatio": 3850.8384692877667
+  },
+  {
+    "instance": "ex-homo-med-med-glow",
+    "orderSize": 10.0,
+    "orderSizeClass": "medium",
+    "fragmentationLabel": "medium",
+    "ammDiversity": "homogeneous_v2",
+    "gasRegime": "low",
+    "marketCount": 3,
+    "tokenCount": 3,
+    "fragmentationScore": 0.3333333333333333,
+    "ga": {
+      "surplus": 504923.80792201404,
+      "gasUnits": 921000.0,
+      "slippage": 10575.190469981619,
+      "netSurplus": 504923.780292014,
+      "runtimeMs": 141.623459,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.5482343191335657,
+      "splitRatios": [
+        0.33818686647245516,
+        0.33127782006077083,
+        0.33053531346677406
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 468679.44700244296,
+      "gasUnits": 321000,
+      "runtimeMs": 0.04166700000002299,
+      "pathLength": 2,
+      "paths": [
+        [
+          {
+            "fromToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "toToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "poolAddress": "0xa181",
+            "protocol": "UniswapV2"
+          },
+          {
+            "fromToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "toToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "poolAddress": "0xa182",
+            "protocol": "UniswapV2"
+          }
+        ]
+      ],
+      "slippage": 27395.227940193974,
+      "outputPerGas": 1.4600605825621276
+    },
+    "surplusDelta": 36244.360919571074,
+    "slippageDelta": -16820.037470212355,
+    "outputPerGasDelta": -0.9118262634285619,
+    "runtimeRatio": 3398.935824511528
+  },
+  {
+    "instance": "ex-low-0001",
+    "orderSize": 1.0,
+    "orderSizeClass": "small",
+    "fragmentationLabel": "low",
+    "ammDiversity": "homogeneous_v2",
+    "gasRegime": "low",
+    "marketCount": 3,
+    "tokenCount": 3,
+    "fragmentationScore": 0.3333333333333333,
+    "ga": {
+      "surplus": 52647.21675341859,
+      "gasUnits": 621000.0,
+      "slippage": 196.55754351794064,
+      "netSurplus": 52647.19812341859,
+      "runtimeMs": 138.3708330000001,
+      "pathCount": 2,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.08477812681709918,
+      "splitRatios": [
+        0.49992051946179067,
+        0.5000794805382094
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 52317.941435425426,
+      "gasUnits": 321000,
+      "runtimeMs": 0.03820799999998403,
+      "pathLength": 2,
+      "paths": [
+        [
+          {
+            "fromToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "toToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "poolAddress": "0x2222",
+            "protocol": "UniswapV2"
+          },
+          {
+            "fromToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "toToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "poolAddress": "0x3333",
+            "protocol": "UniswapV2"
+          }
+        ]
+      ],
+      "slippage": 357.7576402736454,
+      "outputPerGas": 0.1629842412318549
+    },
+    "surplusDelta": 329.27531799316057,
+    "slippageDelta": -161.20009675570475,
+    "outputPerGasDelta": -0.07820611441475572,
+    "runtimeRatio": 3621.5146827904605
+  },
+  {
+    "instance": "ex-mixed-lg-high-ghigh",
+    "orderSize": 200.0,
+    "orderSizeClass": "large",
+    "fragmentationLabel": "high",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "high",
+    "marketCount": 8,
+    "tokenCount": 3,
+    "fragmentationScore": 0.8888888888888888,
+    "ga": {
+      "surplus": 7095991.3820726015,
+      "gasUnits": 621000.0,
+      "slippage": 1322343.480358308,
+      "netSurplus": 7095991.363442602,
+      "runtimeMs": 138.121583,
+      "pathCount": 3,
+      "avgHopCount": 1.3333333333333333,
+      "outputPerGas": 11.426717201405156,
+      "splitRatios": [
+        0.38931859973507643,
+        0.24207468630813905,
+        0.3686067139567845
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.07504199999996963,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 7095991.3820726015,
+    "slippageDelta": 1322343.480358308,
+    "outputPerGasDelta": 11.426717201405156,
+    "runtimeRatio": 1840.5903760568199
+  },
+  {
+    "instance": "ex-mixed-lg-high-glow",
+    "orderSize": 200.0,
+    "orderSizeClass": "large",
+    "fragmentationLabel": "high",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "low",
+    "marketCount": 9,
+    "tokenCount": 3,
+    "fragmentationScore": 1.0,
+    "ga": {
+      "surplus": 7133712.362296633,
+      "gasUnits": 621000.0,
+      "slippage": 1355440.8644816477,
+      "netSurplus": 7133712.343666634,
+      "runtimeMs": 129.85245899999998,
+      "pathCount": 3,
+      "avgHopCount": 1.3333333333333333,
+      "outputPerGas": 11.487459520606494,
+      "splitRatios": [
+        0.2469389069656142,
+        0.378213907018079,
+        0.37484718601630684
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.07370799999995015,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 7133712.362296633,
+    "slippageDelta": 1355440.8644816477,
+    "outputPerGasDelta": 11.487459520606494,
+    "runtimeRatio": 1761.71459000499
+  },
+  {
+    "instance": "ex-mixed-lg-low-gmed",
+    "orderSize": 200.0,
+    "orderSizeClass": "large",
+    "fragmentationLabel": "low",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 5,
+    "tokenCount": 3,
+    "fragmentationScore": 0.5555555555555556,
+    "ga": {
+      "surplus": 7040128.543625418,
+      "gasUnits": 471000.0,
+      "slippage": 959871.4563745814,
+      "netSurplus": 7040128.529495418,
+      "runtimeMs": 133.35166700000002,
+      "pathCount": 3,
+      "avgHopCount": 1.0,
+      "outputPerGas": 14.947194360138893,
+      "splitRatios": [
+        0.33392400016478313,
+        0.3337345102573766,
+        0.3323414895778402
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.05058300000015947,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 7040128.543625418,
+    "slippageDelta": 959871.4563745814,
+    "outputPerGasDelta": 14.947194360138893,
+    "runtimeRatio": 2636.2941502002573
+  },
+  {
+    "instance": "ex-mixed-lg-med-gmed",
+    "orderSize": 200.0,
+    "orderSizeClass": "large",
+    "fragmentationLabel": "medium",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 6,
+    "tokenCount": 3,
+    "fragmentationScore": 0.6666666666666666,
+    "ga": {
+      "surplus": 6938713.03682496,
+      "gasUnits": 471000.0,
+      "slippage": 1061286.9631750395,
+      "netSurplus": 6938713.02269496,
+      "runtimeMs": 130.57762499999993,
+      "pathCount": 3,
+      "avgHopCount": 1.0,
+      "outputPerGas": 14.731874812791848,
+      "splitRatios": [
+        0.38609059367160686,
+        0.29149813653291373,
+        0.3224112697954794
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.0628330000000954,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 6938713.03682496,
+    "slippageDelta": 1061286.9631750395,
+    "outputPerGasDelta": 14.731874812791848,
+    "runtimeRatio": 2078.1695128324554
+  },
+  {
+    "instance": "ex-mixed-med-high-gmed",
+    "orderSize": 10.0,
+    "orderSizeClass": "medium",
+    "fragmentationLabel": "high",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 9,
+    "tokenCount": 3,
+    "fragmentationScore": 1.0,
+    "ga": {
+      "surplus": 825975.2383882063,
+      "gasUnits": 921000.0,
+      "slippage": 27989.150303450144,
+      "netSurplus": 825975.2107582063,
+      "runtimeMs": 140.53150000000002,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.8968243630707995,
+      "splitRatios": [
+        0.3657088274033487,
+        0.27342603298333507,
+        0.36086513961331623
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.08341600000005833,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 825975.2383882063,
+    "slippageDelta": 27989.150303450144,
+    "outputPerGasDelta": 0.8968243630707995,
+    "runtimeRatio": 1684.706770882106
+  },
+  {
+    "instance": "ex-mixed-med-low-gmed",
+    "orderSize": 10.0,
+    "orderSizeClass": "medium",
+    "fragmentationLabel": "low",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 5,
+    "tokenCount": 3,
+    "fragmentationScore": 0.5555555555555556,
+    "ga": {
+      "surplus": 483618.9940198169,
+      "gasUnits": 621000.0,
+      "slippage": 13410.736295710063,
+      "netSurplus": 483618.9753898169,
+      "runtimeMs": 135.78454200000013,
+      "pathCount": 2,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.7787745475359371,
+      "splitRatios": [
+        0.5016735808730461,
+        0.49832641912695386
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.04787499999991951,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 483618.9940198169,
+    "slippageDelta": 13410.736295710063,
+    "outputPerGasDelta": 0.7787745475359371,
+    "runtimeRatio": 2836.230642302421
+  },
+  {
+    "instance": "ex-mixed-sm-high-gmed",
+    "orderSize": 1.0,
+    "orderSizeClass": "small",
+    "fragmentationLabel": "high",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 10,
+    "tokenCount": 3,
+    "fragmentationScore": 1.0,
+    "ga": {
+      "surplus": 76797.79411500404,
+      "gasUnits": 621000.0,
+      "slippage": 407.6417532018638,
+      "netSurplus": 76797.77548500404,
+      "runtimeMs": 133.19254199999997,
+      "pathCount": 2,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.12366794543478912,
+      "splitRatios": [
+        0.49964296407734715,
+        0.5003570359226529
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.09558300000001019,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 76797.79411500404,
+    "slippageDelta": 407.6417532018638,
+    "outputPerGasDelta": 0.12366794543478912,
+    "runtimeRatio": 1393.4752204888503
+  },
+  {
+    "instance": "ex-mixed-sm-low-glow",
+    "orderSize": 1.0,
+    "orderSizeClass": "small",
+    "fragmentationLabel": "low",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "low",
+    "marketCount": 5,
+    "tokenCount": 3,
+    "fragmentationScore": 0.5555555555555556,
+    "ga": {
+      "surplus": 55384.78953636312,
+      "gasUnits": 621000.0,
+      "slippage": 195.86958008393663,
+      "netSurplus": 55384.77090636312,
+      "runtimeMs": 134.84537499999982,
+      "pathCount": 2,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.08918645658029488,
+      "splitRatios": [
+        0.4977164931702248,
+        0.5022835068297752
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.06750000000010914,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 55384.78953636312,
+    "slippageDelta": 195.86958008393663,
+    "outputPerGasDelta": 0.08918645658029488,
+    "runtimeRatio": 1997.7092592560266
+  },
+  {
+    "instance": "ex-mixed-sm-med-gmed",
+    "orderSize": 1.0,
+    "orderSizeClass": "small",
+    "fragmentationLabel": "medium",
+    "ammDiversity": "mixed_v2_v3_curve",
+    "gasRegime": "medium",
+    "marketCount": 6,
+    "tokenCount": 3,
+    "fragmentationScore": 0.6666666666666666,
+    "ga": {
+      "surplus": 54080.428252258986,
+      "gasUnits": 921000.0,
+      "slippage": 145.47603549476662,
+      "netSurplus": 54080.40062225899,
+      "runtimeMs": 135.76354200000006,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.058719248916676424,
+      "splitRatios": [
+        0.33824404453237017,
+        0.33103205234905586,
+        0.3307239031185739
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 0.0,
+      "gasUnits": 21000.0,
+      "runtimeMs": 0.05804099999995316,
+      "pathLength": 0,
+      "paths": []
+    },
+    "surplusDelta": 54080.428252258986,
+    "slippageDelta": 145.47603549476662,
+    "outputPerGasDelta": 0.058719248916676424,
+    "runtimeRatio": 2339.097224377761
+  },
+  {
+    "instance": "ex-0001",
+    "orderSize": 10.0,
+    "orderSizeClass": "medium",
+    "fragmentationLabel": "medium",
+    "ammDiversity": "homogeneous_v2",
+    "gasRegime": "medium",
+    "marketCount": 3,
+    "tokenCount": 3,
+    "fragmentationScore": 0.3333333333333333,
+    "ga": {
+      "surplus": 537454.3569876002,
+      "gasUnits": 921000.0,
+      "slippage": 11688.292016032341,
+      "netSurplus": 537454.3293576002,
+      "runtimeMs": 139.45445899999999,
+      "pathCount": 3,
+      "avgHopCount": 2.0,
+      "outputPerGas": 0.5835552193133553,
+      "splitRatios": [
+        0.3327154058805723,
+        0.3240119558780807,
+        0.343272638241347
+      ],
+      "rank": 1,
+      "generations": 100
+    },
+    "deterministic": {
+      "surplus": 496596.30721571326,
+      "gasUnits": 321000,
+      "runtimeMs": 0.04195799999995309,
+      "pathLength": 2,
+      "paths": [
+        [
+          {
+            "fromToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "toToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "poolAddress": "0x2222",
+            "protocol": "UniswapV2"
+          },
+          {
+            "fromToken": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "toToken": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "poolAddress": "0x3333",
+            "protocol": "UniswapV2"
+          }
+        ]
+      ],
+      "slippage": 30566.75460837883,
+      "outputPerGas": 1.5470289944414743
+    },
+    "surplusDelta": 40858.04977188696,
+    "slippageDelta": -18878.46259234649,
+    "outputPerGasDelta": -0.963473775128119,
+    "runtimeRatio": 3323.6679298383124
+  }
+]
